@@ -24,17 +24,20 @@ unset($userData['phoneOrEmail']);
 try {
     $auth->login('users', $userData);
     $_SESSION['message']['success'] = 'Вы успешно вошли.';
+    $userData['password'] = sha1($userData['password']);
+    $_SESSION['user'] = $queryBuilder->getOne('users', $userData);
+    unset($_SESSION['user']['password']);
     header('Location:' . '/main');
-} catch (AlreadyLoggedInException $e) {
-    $_SESSION['message']['warning'] = 'Пользователь с такими данными уже существует';
-    header('Location:' . '/log-in');
-} catch (InvalidSymbolsException $e) {
+}
+catch (InvalidSymbolsException $e) {
     $_SESSION['message']['warning'] = 'Вы ввели недопустимые символы!';
     header('Location:' . '/log-in');
-} catch (\App\Exceptions\NotFoundDataException $e) {
+}
+catch (\App\Exceptions\NotFoundDataException $e) {
     $_SESSION['message']['warning'] = 'Такого пользователя не существует';
     header('Location:' . '/log-in');
-} catch (\App\Exceptions\WrongPasswordException $e) {
+}
+catch (\App\Exceptions\WrongPasswordException $e) {
     $_SESSION['message']['warning'] = 'Вы ввели неверный пароль';
     header('Location:' . '/log-in');
 }
