@@ -37,6 +37,7 @@ if (isset($_SESSION['user'])) {
         <input required type="password" class="form-control" name="password" id="password">
     </div>
     <button type="submit" class="btn btn-primary">Войти</button>
+    <p>Еще не зарегистрированы? <a href="/">Зарегистрируйтесь</a></p>
 </form>
 
 </body>

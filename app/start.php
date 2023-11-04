@@ -19,6 +19,9 @@ else if ($url === '/enter') {
 else if ($url === '/logout') {
     require 'logic/logout.php';
 }
+else if ($url === '/edit-profile') {
+    require 'logic/edit-profile.php';
+}
 else {
     echo 'Error 404';
 }

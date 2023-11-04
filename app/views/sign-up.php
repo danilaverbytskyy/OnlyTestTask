@@ -50,6 +50,7 @@ if (isset($_SESSION['user'])) {
         <input required type="password" class="form-control" name="password2" id="password2">
     </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    <p>Уже зарегистрированы? <a href="/log-in">Войдите</a></p>
 </form>
 </body>
 </html>
